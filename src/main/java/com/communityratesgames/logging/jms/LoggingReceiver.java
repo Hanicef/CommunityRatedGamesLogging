@@ -1,4 +1,4 @@
-package com.communityratesgames.logging.JMS;
+package com.communityratesgames.logging.jms;
 
 import org.apache.log4j.Logger;
 
@@ -11,9 +11,9 @@ import javax.jms.MessageListener;
 @MessageDriven(activationConfig = {@ActivationConfigProperty(propertyName = "destination", propertyValue = "java:/jms/queue/crg")})
 public class LoggingReceiver implements MessageListener {
 
-    private final static Logger logger = Logger.getLogger(com.communityratesgames.logging.JMS.LoggingReceiver.class);
+    private final static Logger logger = Logger.getLogger(com.communityratesgames.logging.jms.LoggingReceiver.class);
 
-/* Instead of REST end point, this will be the "endpoint" for a JMS queue. Works like an websocket listener*/
+/* Instead of REST end point, this will be the "endpoint" for a jms queue. Works like an websocket listener*/
     @Override
     public void onMessage(Message message) {
         logger.info("ONMESSAGE IN RECEIVER: " + message);
