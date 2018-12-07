@@ -26,9 +26,34 @@ public class Logging implements Serializable {
     @Lob
     @Column(name="message", columnDefinition = "text")
     private String message;
+
     @NotNull
     @Column(name="recieved")
     public Timestamp getTimestamp() {
         return new Timestamp(System.currentTimeMillis());
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Timestamp getRecieved() {
+        return this.recieved;
+    }
+
+    public void setRecieved(Timestamp recieved) {
+        this.recieved = recieved;
+    }
+
+    public String getMessage() {
+        return this.message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

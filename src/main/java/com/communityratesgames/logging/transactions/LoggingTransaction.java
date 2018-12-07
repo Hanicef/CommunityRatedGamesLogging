@@ -25,7 +25,7 @@ public class LoggingTransaction implements LoggingDataMethods {
 
     @Override
     public List<Logging> showAllLogs() {
-        Query q = em.createNativeQuery("SELECT * FROM logging", Logging.class);
+        Query q = em.createNativeQuery("SELECT * FROM logs", Logging.class);
         List<Logging> logs = q.getResultList();
         return logs;
     }
