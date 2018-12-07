@@ -5,13 +5,11 @@ import com.communityratesgames.logging.domain.Logging;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.NoArgsConstructor;
 
-import javax.ejb.PostActivate;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 @NoArgsConstructor
 @Stateless
@@ -32,6 +30,17 @@ public class LoggingController {
             return Response.ok(temp).build();
         }catch (Exception e){
             return Response.status(413).entity(e.getMessage()).build();
+        }
+    }
+
+    @GET
+    @Produces("application/JSON")
+    public Response showAllLogs() {
+        try {
+            List<Logging> result = dal.showAllLogs();
+            return Response.ok(result).build();
+        } catch ( Exception e ) {
+            return Response.status(404).build();
         }
     }
 }

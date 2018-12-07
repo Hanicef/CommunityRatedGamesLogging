@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Entity
@@ -14,7 +15,7 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @Table(name = "logs")
-public class Logging {
+public class Logging implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,4 +24,8 @@ public class Logging {
     @Lob
     @Column(name="message", columnDefinition = "text")
     private String message;
+
+    public Timestamp getTimestamp() {
+        return new Timestamp(System.currentTimeMillis());
+    }
 }
