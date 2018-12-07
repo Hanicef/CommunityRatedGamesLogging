@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
@@ -19,12 +20,14 @@ public class Logging implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @NotNull
     private Long id;
     private Timestamp recieved;
     @Lob
     @Column(name="message", columnDefinition = "text")
     private String message;
-
+    @NotNull
+    @Column(name="recieved")
     public Timestamp getTimestamp() {
         return new Timestamp(System.currentTimeMillis());
     }
